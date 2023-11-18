@@ -8,7 +8,7 @@ namespace CSV
 {
     public class Shared
     {
-        public static object LockObject { get; set; }
+        public static Mutex Mutex { get; set; }
 
         public static string FilePath {  get; set; }
 
@@ -20,8 +20,8 @@ namespace CSV
         {
             FilePath = @"C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\data.csv";
             GetRowsNumber();
-            LockObject = new object();
             MaxConcurency = 3;
+            Mutex = new Mutex();
         }
 
         private static void GetRowsNumber()

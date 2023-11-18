@@ -6,7 +6,7 @@ namespace CSV
         static void Main(string[] args)
         {
             #region DataCSV
-            File.WriteAllText(Shared.FilePath, 
+            File.WriteAllText(Shared.FilePath,
                 "Chandra Stoll', 'marietta.ewing@phases.com', '0528 Hillbrook Avenue', 'Olathe', 'Mauritius', 'Female'" +
                 "\r\nDennis Ortega', 'joleensimonson@yahoo.com', '9016 Hargreaves Avenue', 'Ontario', 'Kyrgyzstan', 'Male'" +
                 "\r\nCarlton Pickens', 'ayana42517@accessing.krasnodar.su', '3426 Bridge Street', 'Normal', 'Bhutan', 'Male'" +
@@ -19,9 +19,9 @@ namespace CSV
                 "\r\nHelene Elrod', 'katheryn04393@gmail.com', '7582 Coal', 'Appleton', 'Albania', 'Female'");
             #endregion
 
-           
+
             //Reading data from file
-            using(StreamReader sr = new(Shared.FilePath)) 
+            using (StreamReader sr = new(Shared.FilePath))
             {
                 string? line;
                 int lineNumbers = 0;
@@ -31,14 +31,14 @@ namespace CSV
                 List<string> lines = [];
                 Semaphore semaphore = new(Shared.MaxConcurency, Shared.MaxConcurency);
 
-                while((line = sr.ReadLine()) != null)
+                while ((line = sr.ReadLine()) != null)
                 {
-                    if(string.IsNullOrEmpty(line)) continue;
+                    if (string.IsNullOrEmpty(line)) continue;
 
                     lineNumbers++;
                     lines.Add(line);
 
-                    if(lineNumbers % Shared.ChunkSize == 0)
+                    if (lineNumbers % Shared.ChunkSize == 0)
                     {
                         threadCount++;
 
@@ -59,9 +59,9 @@ namespace CSV
                                 Console.WriteLine(ex.Message);
                                 throw;
                             }
-                            finally 
-                            { 
-                                semaphore.Release(); 
+                            finally
+                            {
+                                semaphore.Release();
                             }
                         });
 
@@ -71,7 +71,7 @@ namespace CSV
                     }
                 }
 
-                if(lines.Count > 0)
+                if (lines.Count > 0)
                 {
                     threadCount++;
                     string chunkName = $"Chunk {threadCount}";
@@ -110,16 +110,27 @@ namespace CSV
 
             processor.ProcessChunk();
 
-
-            lock (Shared.LockObject)
+            try
             {
-                Console.WriteLine($"\nProcessed: {processor.ChunkName} of size {chunkCopy.Count}");
-                Console.WriteLine($"{processor.ChunkName}");
-
-                foreach(var gender in processor.GenderCounts)
+                Shared.Mutex.WaitOne();
                 {
-                    Console.WriteLine($"{gender.Key}: {gender.Value}");
+                    Console.WriteLine($"\nProcessed: {processor.ChunkName} of size {chunkCopy.Count}");
+                    Console.WriteLine($"{processor.ChunkName}");
+
+                    foreach (var gender in processor.GenderCounts)
+                    {
+                        Console.WriteLine($"{gender.Key}: {gender.Value}");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                Shared.Mutex.ReleaseMutex();
             }
         }
     }
