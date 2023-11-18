@@ -14,11 +14,14 @@ namespace CSV
 
         public static int ChunkSize { get; set; }
 
+        public static int MaxConcurency { get; set; }
+
         static Shared()
         {
             FilePath = @"C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\data.csv";
             GetRowsNumber();
             LockObject = new object();
+            MaxConcurency = 3;
         }
 
         private static void GetRowsNumber()

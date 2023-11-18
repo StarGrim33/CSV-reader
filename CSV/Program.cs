@@ -29,6 +29,7 @@ namespace CSV
 
                 List<Thread> threads = [];
                 List<string> lines = [];
+                Semaphore semaphore = new(Shared.MaxConcurency, Shared.MaxConcurency);
 
                 while((line = sr.ReadLine()) != null)
                 {
@@ -46,7 +47,22 @@ namespace CSV
 
                         Thread thread = new(() =>
                         {
-                            InvokeDataProcessor(chunkName, chunkCopy);
+                            //Wait for the semaphore to be available
+                            semaphore.WaitOne();
+
+                            try
+                            {
+                                InvokeDataProcessor(chunkName, chunkCopy);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                                throw;
+                            }
+                            finally 
+                            { 
+                                semaphore.Release(); 
+                            }
                         });
 
                         threads.Add(thread);

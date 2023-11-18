@@ -12,3 +12,4 @@ C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\refin
 C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.pdb
 C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.genruntimeconfig.cache
 C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\ref\CSV.dll
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.sourcelink.json
