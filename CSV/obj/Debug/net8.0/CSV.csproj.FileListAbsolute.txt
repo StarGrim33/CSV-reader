@@ -1,0 +1,14 @@
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\CSV.exe
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\CSV.deps.json
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\CSV.runtimeconfig.json
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\CSV.dll
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\bin\Debug\net8.0\CSV.pdb
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.AssemblyInfoInputs.cache
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.AssemblyInfo.cs
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.csproj.CoreCompileInputs.cache
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.dll
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\refint\CSV.dll
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.pdb
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\CSV.genruntimeconfig.cache
+C:\Users\prosk\OneDrive\Документы\GitHub\CSV\CSV\obj\Debug\net8.0\ref\CSV.dll
